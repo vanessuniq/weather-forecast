@@ -5,7 +5,7 @@ require "weather/forecast/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "weather-forecast"
-  spec.version       = Weather::Forecast::VERSION
+  spec.version       = Weather::VERSION
   spec.authors       = ["vanessuniq"]
   spec.email         = ["vanessuniq@gmail.com"]
 
