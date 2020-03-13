@@ -4,10 +4,10 @@ require 'rexml/document'
 module Weather
     class ForecastApi
     include REXML
-    APP_ID = ENV['API_KEY']
+    APP_ID = '1f792f9fe2181c904b1196d07a34cd8f'
 
     # fetch forecast info from OpenWeather API
-        def self.fetch(zipcode = '20904')
+        def self.fetch(zipcode)
         url = "http://api.openweathermap.org/data/2.5/forecast?zip=#{zipcode}&unit=imperial&appid=#{APP_ID}"
         response = Net::HTTP.get_response(url)
             if response.code == '200'

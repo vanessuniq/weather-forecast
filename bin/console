@@ -9,8 +9,7 @@ require 'environment.rb'
 # require "pry"
 # Pry.start
 
-require "irb"
-IRB.start(__FILE__)
+
 
 Weather::ForecastCli.new.start
 
