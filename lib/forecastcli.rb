@@ -1,20 +1,19 @@
-require "weather/forecast/version"
+require "forecast/version"
 
 module Weather
   class ForecastCli
+    APP_ID = ENV['API_KEY']
 
     def start
-        welcome
-        Instructions
+        self.welcome
+        self.instructions
     end
 
     def welcome
-        puts << INFO
-        Welcome to your forecast!
-
-        This is your personalized weather assistant that allows you
-        to get daily weather information by zipcode.
-        INFO
+        puts 'Welcome to your forecast!'
+        puts ''
+        puts 'This is your personalized weather assistant that allows you
+        to get daily weather information by zipcode.'
         line_break
         puts ''
         puts 'Instructions'
@@ -22,11 +21,11 @@ module Weather
         puts 'Follow instruction bellow'
         puts 'Enter zipcode to get weather detail'
         puts "Type 'exit' to quit"
-        line_break
+        self.line_break
         puts ''
     end
 
-    def Instructions
+    def instructions
         puts 'Enter your five digit zipcode to get started:'
         zipcode = gets.chomp
         ForecastApi.fetch(zipcode)
