@@ -6,6 +6,7 @@ gem 'dotenv'
 gem 'lolcat'
 gem 'tty-prompt'
 gem 'figlet'
+gem 'httparty'
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 

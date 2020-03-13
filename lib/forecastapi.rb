@@ -1,5 +1,5 @@
 require 'pry'
-require 'net/http'
+require 'httparty'
 require 'rexml/document'
 module Weather
     class ForecastApi
