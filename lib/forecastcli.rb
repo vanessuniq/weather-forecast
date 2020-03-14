@@ -1,4 +1,5 @@
 require "forecast/version"
+require 'tty-prompt'
 
 module Weather
   class ForecastCli
@@ -35,7 +36,8 @@ module Weather
             location = Weather::Forecast.new.location(zipcode)
             puts "This is the 24 HRS forecast for #{location}:"
             puts ''
-            #retrieve day_1 method from forecast.rb
+            Weather::Forecast.new.hourly_forecast(zipcode)
+            Weather::Forecast.new.day_display
             line_break
             puts ''
             additional_options
@@ -48,44 +50,56 @@ module Weather
             instructions
           end
         end
-        
+        goodbye
     end
 
     def additional_options
-      puts 'For additional forecast, make a selection bellow and press enter:'
-      # construct a table to make a selection with tty-prompt
-      if option_1
-        puts Weather::Forecast.new.day_2
+      puts 'For additional forecast, use ↑/↓ or ←/→ then press enter to make a selection:'
+      # design a menu to make a selection with tty-prompt
+      
+      
+        if answer == 'Next-Day-Forecast' 
+          Weather::Forecast.new.day_display
+          additional_options
+        elsif answer == 'Next-2-Days-Forecast'
+          2.times do
+            Weather::Forecast.new.day_display
+          end
         additional_options
-      elsif option_2
-        puts Weather::Forecast.new.day_2
-        puts Weather::Forecast.new.day_3
-        additional_options
-      elsif option_3
-        puts Weather::Forecast.new.day_2
-        puts Weather::Forecast.new.day_3
-        puts Weather::Forecast.new.day_4
-        additional_options
-      elsif option_4
-        puts Weather::Forecast.new.day_2
-        puts Weather::Forecast.new.day_3
-        puts Weather::Forecast.new.day_4
-        puts Weather::Forecast.new.day_5
-        additional_options
-      elsif option_5
-        Weather::Forecast.erase
-        system('cls') || system('clear')
-        instructions
-      else
-        Weather::Forecast.erase
-        puts 'Thanks for visiting!'
-        puts 'Enjoy the weather until next time :)'
-        exit 
-      end
+        elsif answer == 'Next-3-Days-Forecast'
+          3.times do
+            Weather::Forecast.new.day_display
+          end
+          additional_options
+        elsif answer == 'Next-4-Days-Forecast'
+          4.times do
+            Weather::Forecast.new.day_display
+          end
+          additional_options
+        elsif answer == 'Check-Another-Area'
+          Weather::Forecast.erase
+          system('cls') || system('clear')
+          instructions
+        elsif answer == 'Exit'
+          Weather::Forecast.erase
+          goodbye
+          exit 
+        end
+
+    end
+
+    def menu
+      options = ['Next-Day-Forecast', 'Next-2-Days-Forecast', 'Next-3-Days-Forecast', 'Next-4-Days-Forecast', 'Check-Another-Area', 'Exit']
+      options
     end
 
     def line_break
         puts '=========================================================================================='
+    end
+
+    def goodbye
+      puts 'Thanks "for" visiting!'
+      puts 'Enjoy the weather until next time :)'
     end
 
     class Error < StandardError
@@ -95,6 +109,8 @@ module Weather
         puts 'Please try again!'
       end
     end
+  
   end
+  
   
 end

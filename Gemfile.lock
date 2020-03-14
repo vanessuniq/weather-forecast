@@ -37,6 +37,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     rake (10.5.0)
+    terminal-table (1.8.0)
+      unicode-display_width (~> 1.1, >= 1.1.1)
     tty-color (0.5.1)
     tty-cursor (0.7.1)
     tty-prompt (0.21.0)
@@ -48,6 +50,7 @@ GEM
       tty-screen (~> 0.7)
       wisper (~> 2.0.0)
     tty-screen (0.7.1)
+    unicode-display_width (1.7.0)
     wisper (2.0.1)
 
 PLATFORMS
@@ -63,6 +66,7 @@ DEPENDENCIES
   nokogiri (= 1.10.4)
   pry
   rake (~> 10.0)
+  terminal-table
   tty-prompt
   weather-forecast!
 

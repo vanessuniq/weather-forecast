@@ -8,6 +8,7 @@ gem 'tty-prompt'
 gem 'figlet'
 gem 'httparty'
 gem 'json'
+gem 'terminal-table'
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 

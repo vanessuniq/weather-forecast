@@ -1,9 +1,11 @@
 require 'pry'
+require 'terminal-table'
 
 module Weather
 
     class Forecast
         Data = Struct.new(:date, :temp, :humidity, :description)
+        #attr_accessor :date, :temp, :humidity, :description
         @@all = []
 
         def location (zipcode)
@@ -13,52 +15,40 @@ module Weather
 
         def hourly_forecast(zipcode)
             hourly_data = ForecastApi.fetch(zipcode)
-            hourly_data[:list].each do |data|
+            @@all = hourly_data[:list].map do |data|
                 Data.new(
                     Time.at(data[:dt]).strftime('%a %b-%d %H:%M'),
                     data[:main][:temp],
                     data[:main][:humidity],
                     data[:weather].first[:description]
                 )
-                @@all << self
             end
         end
 
-        def day_1
-            first_24 = []
+        def day_display
+            #self.class.erase
+            #hourly_forecast(zipcode)
+            forecast = []
+
             8.times do
-                first_24 << @@all.shift
+                forecast << @@all.shift
             end
+            
+            forecast.each do |data|
+                puts Terminal::Table.new(
+                    rows: [
+                        [data.date, "Temp: #{data.temp} F  Humidity: #{data.humidity}  Sky: #{data.description}"]
+                    ],
+                    style: {
+                        border_i: 'X',
+                        border_x: '='
+                    }
+                )
+            end
+
         end
 
-        def day_2
-            next_day = []
-            8.times do
-                next_day << @@all.shift
-            end
-        end
-
-        def day_3
-            next_2day = []
-            8.times do
-                next_2day << @@all.shift
-            end
-        end
-
-        def day_4
-            next_3day = []
-            8.times do
-                next_3day << @@all.shift
-            end
-        end
-
-        def day_5
-            next_4day = []
-            8.times do
-                next_4day << @@all.shift
-            end
-        end
-
+        
         def self.all
             @@all
         end
