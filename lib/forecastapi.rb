@@ -1,6 +1,8 @@
 require 'pry'
 require 'httparty'
+require 'json'
 require 'rexml/document'
+
 module Weather
     class ForecastApi
     include REXML
@@ -8,16 +10,21 @@ module Weather
 
     # fetch forecast info from OpenWeather API
         def self.fetch(zipcode)
-        url = "http://api.openweathermap.org/data/2.5/forecast?zip=#{zipcode}&unit=imperial&appid=#{APP_ID}"
-        response = Net::HTTP.get_response(url)
-            if response.code == '200'
-            doc = Document.new(File.new(response))
-            puts doc
-            else
-            raise response.body
-            end
+            url = "http://api.openweathermap.org/data/2.5/forecast?zip=#{zipcode}&units=imperial&appid=#{APP_ID}"
+        
+            response = HTTParty.get(url) 
+            
+                # if response.code == '200'
+                    data = JSON.parse(response.body, symbolize_names: true)
+                    data
+            
+                # else
+                #    raise response.body
+                # end
         
         end
+
+        
 
     end
 
