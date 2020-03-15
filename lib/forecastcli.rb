@@ -56,31 +56,31 @@ module Weather
     def additional_options
       puts 'For additional forecast, use ↑/↓ or ←/→ then press enter to make a selection:'
       # design a menu to make a selection with tty-prompt
+      menu
       
-      
-        if answer == 'Next-Day-Forecast' 
+        if @selection == 'Next-Day-Forecast' 
           Weather::Forecast.new.day_display
           additional_options
-        elsif answer == 'Next-2-Days-Forecast'
+        elsif @selection == 'Next-2-Days-Forecast'
           2.times do
             Weather::Forecast.new.day_display
           end
         additional_options
-        elsif answer == 'Next-3-Days-Forecast'
+        elsif @selection == 'Next-3-Days-Forecast'
           3.times do
             Weather::Forecast.new.day_display
           end
           additional_options
-        elsif answer == 'Next-4-Days-Forecast'
+        elsif @selection == 'Next-4-Days-Forecast'
           4.times do
             Weather::Forecast.new.day_display
           end
           additional_options
-        elsif answer == 'Check-Another-Area'
+        elsif @selection == 'Check-Another-Area'
           Weather::Forecast.erase
           system('cls') || system('clear')
           instructions
-        elsif answer == 'Exit'
+        elsif @selection == 'Exit'
           Weather::Forecast.erase
           goodbye
           exit 
@@ -89,8 +89,9 @@ module Weather
     end
 
     def menu
-      options = ['Next-Day-Forecast', 'Next-2-Days-Forecast', 'Next-3-Days-Forecast', 'Next-4-Days-Forecast', 'Check-Another-Area', 'Exit']
-      options
+      prompt = TTY::Prompt.new 
+      @options = %w(Next-Day-Forecast Next-2-Days-Forecast Next-3-Days-Forecast Next-4-Days-Forecast Check-Another-Area Exit)
+      @selection = prompt.select("What would you like to do?", @options)
     end
 
     def line_break

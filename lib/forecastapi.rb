@@ -14,13 +14,13 @@ module Weather
         
             response = HTTParty.get(url) 
             
-                # if response.code == '200'
+                if response.code == '200'
                     data = JSON.parse(response.body, symbolize_names: true)
                     data
             
-                # else
-                #    raise response.body
-                # end
+                 else
+                    raise response.body
+                 end
         
         end
 
