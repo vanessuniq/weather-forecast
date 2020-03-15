@@ -105,8 +105,8 @@ module Weather
     end
 
     def goodbye
-      puts 'Thanks "for" visiting!'
-      puts 'Enjoy the weather until next time :)'
+      puts 'Thanks "for" visiting!'.colorize(:blue)
+      puts 'Enjoy the weather until next time :)'.colorize(:blue)
     end
 
     def specific_request
