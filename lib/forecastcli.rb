@@ -1,6 +1,3 @@
-require "forecast/version"
-require 'tty-prompt'
-
 module Weather
   class ForecastCli
     

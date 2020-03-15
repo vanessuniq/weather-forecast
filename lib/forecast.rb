@@ -1,5 +1,4 @@
 require 'pry'
-require 'terminal-table'
 
 module Weather
 

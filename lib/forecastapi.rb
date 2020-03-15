@@ -1,7 +1,4 @@
 require 'pry'
-require 'httparty'
-require 'json'
-require 'rexml/document'
 
 module Weather
     class ForecastApi
