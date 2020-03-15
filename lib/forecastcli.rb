@@ -3,8 +3,9 @@ require 'tty-prompt'
 
 module Weather
   class ForecastCli
+    
     APP_ID = '1f792f9fe2181c904b1196d07a34cd8f'
-
+    $prompt = TTY::Prompt.new 
     def start
         self.welcome
         self.instructions
@@ -40,6 +41,7 @@ module Weather
             Weather::Forecast.new.day_display
             line_break
             puts ''
+            @options = %w(Exit Check-Another-Area Next-Day-Forecast Next-2-Days-Forecast Next-3-Days-Forecast Next-4-Days-Forecast)
             additional_options
           else
             begin
@@ -50,58 +52,68 @@ module Weather
             instructions
           end
         end
+        system('cls') || system('clear')
         goodbye
     end
 
     def additional_options
-      puts 'For additional forecast, use ↑/↓ or ←/→ then press enter to make a selection:'
-      # design a menu to make a selection with tty-prompt
       menu
-      
-        if @selection == 'Next-Day-Forecast' 
+      case @selection
+      when 'Next-Day-Forecast' 
+       Weather::Forecast.new.day_display
+       @options = %w(Exit Check-Another-Area Next-Day-Forecast Next-2-Days-Forecast Next-3-Days-Forecast)
+       additional_options
+        
+      when 'Next-2-Days-Forecast'
+        2.times do
           Weather::Forecast.new.day_display
-          additional_options
-        elsif @selection == 'Next-2-Days-Forecast'
-          2.times do
-            Weather::Forecast.new.day_display
-          end
+        end
+        @options = %w(Exit Check-Another-Area Next-Day-Forecast Next-2-Days-Forecast)
         additional_options
-        elsif @selection == 'Next-3-Days-Forecast'
-          3.times do
-            Weather::Forecast.new.day_display
-          end
-          additional_options
-        elsif @selection == 'Next-4-Days-Forecast'
-          4.times do
-            Weather::Forecast.new.day_display
-          end
-          additional_options
-        elsif @selection == 'Check-Another-Area'
-          Weather::Forecast.erase
-          system('cls') || system('clear')
-          instructions
-        elsif @selection == 'Exit'
-          Weather::Forecast.erase
+      when 'Next-3-Days-Forecast'
+        3.times do
+          Weather::Forecast.new.day_display
+        end
+        @options = %w(Exit Check-Another-Area Next-Day-Forecast)
+        additional_options
+      when 'Next-4-Days-Forecast'
+        4.times do
+          Weather::Forecast.new.day_display
+        end
+        @options = %w(Exit Check-Another-Area)
+        additional_options
+      when 'Check-Another-Area'
+        Weather::Forecast.erase
+        system('cls') || system('clear')
+        instructions
+
+      else
+        Weather::Forecast.erase
+        system('cls') || system('clear')
           goodbye
           exit 
-        end
+      end  
 
     end
 
     def menu
-      prompt = TTY::Prompt.new 
-      @options = %w(Next-Day-Forecast Next-2-Days-Forecast Next-3-Days-Forecast Next-4-Days-Forecast Check-Another-Area Exit)
-      @selection = prompt.select("What would you like to do?", @options)
+      @selection = $prompt.select("What would you like to do next?", @options)
     end
 
     def line_break
-        puts '=========================================================================================='
+        puts '================================================================================================'
     end
 
     def goodbye
       puts 'Thanks "for" visiting!'
       puts 'Enjoy the weather until next time :)'
     end
+
+    #def run_day
+     # @@counter.times do
+     #   Weather::Forecast.new.day_display
+     # end
+    #end
 
     class Error < StandardError
       def message

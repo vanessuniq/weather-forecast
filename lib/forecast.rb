@@ -5,7 +5,6 @@ module Weather
 
     class Forecast
         Data = Struct.new(:date, :temp, :humidity, :description)
-        #attr_accessor :date, :temp, :humidity, :description
         @@all = []
 
         def location (zipcode)
@@ -41,7 +40,8 @@ module Weather
                     ],
                     style: {
                         border_i: 'X',
-                        border_x: '='
+                        border_x: '=',
+                        width: 80
                     }
                 )
             end
