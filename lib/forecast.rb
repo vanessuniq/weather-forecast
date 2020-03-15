@@ -41,7 +41,7 @@ module Weather
                     style: {
                         border_i: 'X',
                         border_x: '=',
-                        width: 80
+                        width: 110
                     }
                 )
             end

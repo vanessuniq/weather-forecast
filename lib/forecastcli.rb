@@ -58,28 +58,27 @@ module Weather
 
     def additional_options
       menu
+      system('cls') || system('clear')
       case @selection
       when 'Next-Day-Forecast' 
-       Weather::Forecast.new.day_display
-       @options = %w(Exit Check-Another-Area Next-Day-Forecast Next-2-Days-Forecast Next-3-Days-Forecast)
-       additional_options
+        @@counter = 1
+        specific_request
+        @options = %w(Exit Check-Another-Area Next-Day-Forecast Next-2-Days-Forecast Next-3-Days-Forecast)
+        additional_options
         
       when 'Next-2-Days-Forecast'
-        2.times do
-          Weather::Forecast.new.day_display
-        end
+        @@counter = 2
+        specific_request
         @options = %w(Exit Check-Another-Area Next-Day-Forecast Next-2-Days-Forecast)
         additional_options
       when 'Next-3-Days-Forecast'
-        3.times do
-          Weather::Forecast.new.day_display
-        end
+        @@counter = 3
+        specific_request
         @options = %w(Exit Check-Another-Area Next-Day-Forecast)
         additional_options
       when 'Next-4-Days-Forecast'
-        4.times do
-          Weather::Forecast.new.day_display
-        end
+        @counter = 4
+        specific_request
         @options = %w(Exit Check-Another-Area)
         additional_options
       when 'Check-Another-Area'
@@ -101,7 +100,7 @@ module Weather
     end
 
     def line_break
-        puts '================================================================================================'
+        puts '============================================================================================================='
     end
 
     def goodbye
@@ -109,23 +108,22 @@ module Weather
       puts 'Enjoy the weather until next time :)'
     end
 
-    #def run_day
-     # @@counter.times do
-     case Weather::Forecast.all
-     when 32
-       @@counter = 4
-     when 24
-       @@counter = 3
-     when 16
-      @@counter = 2
-     when 8
-      @@counter = 1
-     else
-       
-     end
-     #   Weather::Forecast.new.day_display
-     # end
-    #end
+    def specific_request
+      if Weather::Forecast.all.empty?
+        begin
+          raise WeatherError
+        rescue WeatherError => exception
+          puts exception.message
+        end
+        @options = %w(Exit Check-Another-Area)
+        additional_options
+      else  
+        @@counter.times do
+        Weather::Forecast.new.day_display unless Weather::Forecast.all.empty?
+        end
+      end
+      line_break
+    end
 
     class Error < StandardError
       def message
