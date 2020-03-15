@@ -24,8 +24,6 @@ module Weather
         end
 
         def day_display
-            #self.class.erase
-            #hourly_forecast(zipcode)
             forecast = []
 
             8.times do

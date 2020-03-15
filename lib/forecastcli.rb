@@ -1,6 +1,6 @@
 module Weather
   class ForecastCli
-    
+    include RubyFiglet
     APP_ID = '1f792f9fe2181c904b1196d07a34cd8f'
     $prompt = TTY::Prompt.new 
     def start
@@ -9,23 +9,27 @@ module Weather
     end
 
     def welcome
-        puts 'Welcome to your forecast!'
+      
+        puts Figlet.new('WEATHER-FORECAST').to_s.colorize(:red)
+        puts ''
+        puts ''
+        puts 'Welcome to your forecast!'.colorize(:blue)
         puts ''
         puts 'This is your personalized weather assistant that allows you
         to get daily weather information by zipcode.'
         line_break
         puts ''
-        puts 'Instructions'
+        puts 'Instructions'.colorize(:red)
         puts ''
         puts 'Follow instruction bellow'
         puts 'Enter zipcode to get weather detail'
-        puts "Type 'exit' to quit"
+        puts "Type 'exit' to quit".colorize(:blue)
         self.line_break
         puts ''
     end
 
     def instructions
-        puts 'Enter your five digit zipcode to get started or "exit" to quit:'
+        puts 'Enter your five digit zipcode to get started or "exit" to quit:'.colorize(:blue)
         zipcode = gets.chomp.downcase
         #check for vald zip code: all digits string and length = 5
         while zipcode != 'exit'
@@ -93,11 +97,11 @@ module Weather
     end
 
     def menu
-      @selection = $prompt.select("What would you like to do next?", @options)
+      @selection = $prompt.select("What would you like to do next?".colorize(:green), @options)
     end
 
     def line_break
-        puts '============================================================================================================='
+        puts '============================================================================================================='.colorize(:white)
     end
 
     def goodbye
@@ -124,17 +128,17 @@ module Weather
 
     class Error < StandardError
       def message
-        puts 'Invalid Input'
+        puts 'Invalid Input'.colorize(:red)
         puts ''
-        puts 'Please try again!'
+        puts 'Please try again!'.colorize(:green)
       end
     end
 
     class WeatherError < StandardError
       def message
-        puts 'No more Forecast available'
+        puts 'No more Forecast available'.colorize(:red)
         puts ''
-        puts 'Make another Selection!'
+        puts 'Make another Selection!'.colorize(:green)
       end
     end
   

@@ -10,6 +10,5 @@ require 'environment.rb'
 # Pry.start
 
 
-
 Weather::ForecastCli.new.start
 
