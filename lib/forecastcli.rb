@@ -111,6 +111,18 @@ module Weather
 
     #def run_day
      # @@counter.times do
+     case Weather::Forecast.all
+     when 32
+       @@counter = 4
+     when 24
+       @@counter = 3
+     when 16
+      @@counter = 2
+     when 8
+      @@counter = 1
+     else
+       
+     end
      #   Weather::Forecast.new.day_display
      # end
     #end
@@ -120,6 +132,14 @@ module Weather
         puts 'Invalid Input'
         puts ''
         puts 'Please try again!'
+      end
+    end
+
+    class WeatherError < StandardError
+      def message
+        puts 'No more Forecast available'
+        puts ''
+        puts 'Make another Selection!'
       end
     end
   
