@@ -24,7 +24,9 @@ GEM
     mini_portile2 (2.4.0)
     multi_xml (0.6.0)
     necromancer (0.5.1)
-    nokogiri (1.10.4-x64-mingw32)
+    nokogiri (1.10.9)
+      mini_portile2 (~> 2.4.0)
+    nokogiri (1.10.9-x64-mingw32)
       mini_portile2 (~> 2.4.0)
     pastel (0.7.3)
       equatable (~> 0.6)
@@ -131,6 +133,7 @@ GEM
     wisper (2.0.1)
 
 PLATFORMS
+  ruby
   x64-mingw32
 
 DEPENDENCIES
@@ -140,7 +143,7 @@ DEPENDENCIES
   figlet
   httparty
   json
-  nokogiri (= 1.10.4)
+  nokogiri (= 1.10.9)
   pry
   rake (~> 10.0)
   ruby_figlet
