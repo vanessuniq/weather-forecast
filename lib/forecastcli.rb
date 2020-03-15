@@ -36,7 +36,7 @@ module Weather
           if zipcode[/[0-9]+/] == zipcode && zipcode.length == 5
             system('cls') || system('clear')
             location = Weather::Forecast.new.location(zipcode)
-            puts "This is the 24 HRS forecast for #{location}:"
+            puts "This is the 24 HRS forecast for #{location}:".colorize(:blue)
             puts ''
             Weather::Forecast.new.hourly_forecast(zipcode)
             Weather::Forecast.new.day_display
