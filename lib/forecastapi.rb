@@ -15,8 +15,6 @@ module Weather
         
         end
 
-        
-
     end
 
 

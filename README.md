@@ -1,8 +1,12 @@
 # Weather::Forecast
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/weather/forecast`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to your Weather-Forecast!
 
-TODO: Delete this and the text above, and describe your gem
+This gem provides you with a fun CLI app that allow you to query 3-hours weather data for up to five days.
+The provided data are fetched from the OpenWeatherMap API and you can query your forecast by zipcode.
+
+Enjoy your weather!!
+
 
 ## Installation
 
@@ -22,7 +26,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+This gem  requires an API Key from OpenWeatherMap. A free key can be obtained after signing up.
+ Check other required gem for the app in the Gemfile. 
 
 ## Development
 
@@ -32,7 +37,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/weather-forecast. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/vanessuniq/weather-forecast. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -40,4 +45,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Weather::Forecast project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/weather-forecast/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Weather::Forecast project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/vanessuniq/weather-forecast/blob/master/CODE_OF_CONDUCT.md).
