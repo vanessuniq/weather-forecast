@@ -5,7 +5,7 @@ Welcome to your Weather-Forecast!
 This gem provides you with a fun CLI app that allow you to query 3-hours weather data for up to five days.
 The provided data are fetched from the OpenWeatherMap API and you can query your forecast by zipcode.
 
-Enjoy your weather!!
+Enjoy your weather!!!
 
 
 ## Installation
