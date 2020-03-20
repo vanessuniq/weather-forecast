@@ -35,11 +35,10 @@ module Weather
         while zipcode != 'exit'
           if zipcode[/[0-9]+/] == zipcode && zipcode.length == 5
             system('cls') || system('clear')
-            location = Weather::Forecast.new.location(zipcode)
-            puts "This is the 24 HRS forecast for #{location}:".colorize(:blue)
+            Weather::ForecastApi.fetch(zipcode)
+            puts "This is the 24 HRS forecast for #{Weather::Forecast.all.first.location}:".colorize(:blue)
             puts ''
-            Weather::Forecast.new.hourly_forecast(zipcode)
-            Weather::Forecast.new.day_display
+            Weather::Forecast.day_display
             line_break
             puts ''
             @options = %w(Exit Check-Another-Area Next-Day-Forecast Next-2-Days-Forecast Next-3-Days-Forecast Next-4-Days-Forecast)
@@ -116,7 +115,7 @@ module Weather
         additional_options
       else  
         @@counter.times do
-        Weather::Forecast.new.day_display unless Weather::Forecast.all.empty?
+        Weather::Forecast.day_display unless Weather::Forecast.all.empty?
         @options.pop
         end
 

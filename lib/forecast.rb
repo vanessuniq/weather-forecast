@@ -3,27 +3,22 @@ require 'pry'
 module Weather
 
     class Forecast
-        Data = Struct.new(:date, :temp, :humidity, :description)
         @@all = []
+        attr_accessor :location, :date, :temp, :humidity, :description
 
-        def location (zipcode)
-            city = ForecastApi.fetch(zipcode)
-            city[:city][:name]
+        def initialize (date:, temp:, humidity:, description:)
+            @date = date
+            @temp = temp
+            @humidity = humidity
+            @description = description
+            save
         end
 
-        def hourly_forecast(zipcode)
-            hourly_data = ForecastApi.fetch(zipcode)
-            @@all = hourly_data[:list].map do |data|
-                Data.new(
-                    Time.at(data[:dt]).strftime('%a %b-%d %H:%M'),
-                    data[:main][:temp],
-                    data[:main][:humidity],
-                    data[:weather].first[:description]
-                )
-            end
+        def save
+            @@all << self
         end
 
-        def day_display
+        def self.day_display
             forecast = []
 
             8.times do
@@ -46,7 +41,7 @@ module Weather
         end
 
         
-        def self.all
+        def self.all 
             @@all
         end
 
@@ -54,4 +49,5 @@ module Weather
             @@all.clear
         end
     end
+
 end
