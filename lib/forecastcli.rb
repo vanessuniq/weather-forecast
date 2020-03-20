@@ -64,23 +64,19 @@ module Weather
       when 'Next-Day-Forecast' 
         @@counter = 1
         specific_request
-        @options = %w(Exit Check-Another-Area Next-Day-Forecast Next-2-Days-Forecast Next-3-Days-Forecast)
         additional_options
         
       when 'Next-2-Days-Forecast'
         @@counter = 2
         specific_request
-        @options = %w(Exit Check-Another-Area Next-Day-Forecast Next-2-Days-Forecast)
         additional_options
       when 'Next-3-Days-Forecast'
         @@counter = 3
         specific_request
-        @options = %w(Exit Check-Another-Area Next-Day-Forecast)
         additional_options
       when 'Next-4-Days-Forecast'
-        @counter = 4
+        @@counter = 4
         specific_request
-        @options = %w(Exit Check-Another-Area)
         additional_options
       when 'Check-Another-Area'
         Weather::Forecast.erase
@@ -121,7 +117,10 @@ module Weather
       else  
         @@counter.times do
         Weather::Forecast.new.day_display unless Weather::Forecast.all.empty?
+        @options.pop
         end
+
+        puts 'You have now viewed the maximum five days forecast.'.colorize(:red) if @options.size == 2
       end
       line_break
     end
