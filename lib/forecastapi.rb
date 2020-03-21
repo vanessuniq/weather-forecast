@@ -2,8 +2,7 @@ require 'pry'
 
 module Weather
     class ForecastApi
-
-    APP_ID = '1f792f9fe2181c904b1196d07a34cd8f'
+    APP_ID = ENV['API_KEY']
 
     # fetch forecast info from OpenWeather API
         def self.fetch(zipcode)

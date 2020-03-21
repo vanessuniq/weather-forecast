@@ -1,7 +1,7 @@
 module Weather
   class ForecastCli
     include RubyFiglet
-    APP_ID = '1f792f9fe2181c904b1196d07a34cd8f'
+    APP_ID = ENV['API_KEY']
     $prompt = TTY::Prompt.new 
     def start
         self.welcome
