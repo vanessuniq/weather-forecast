@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 
+gem 'dotenv'
 gem 'pry'
 gem 'nokogiri', '1.10.4'
-gem 'dotenv'
 gem 'colorize'
 gem 'tty'
 gem 'tty-prompt'

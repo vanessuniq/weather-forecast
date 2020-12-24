@@ -1,6 +1,8 @@
 require "bundler/setup"
 Bundler.require
 
+require 'dotenv'
+Dotenv.load
 require 'tty-prompt'
 require 'httparty'
 require 'json'
