@@ -34,7 +34,7 @@ GEM
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
-    rake (10.5.0)
+    rake (13.0.3)
     rouge (3.17.0)
     ruby_figlet (0.6.1)
     strings (0.1.8)
@@ -145,7 +145,7 @@ DEPENDENCIES
   json
   nokogiri (= 1.10.10)
   pry
-  rake (~> 10.0)
+  rake (~> 13.0)
   ruby_figlet
   terminal-table
   tty
