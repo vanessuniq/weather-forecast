@@ -28,12 +28,12 @@ module Weather
             forecast.each do |data|
                 puts Terminal::Table.new(
                     rows: [
-                        [data.date, "Temp: #{data.temp} F  Humidity: #{data.humidity}  Sky: #{data.description}"]
+                        [data.date, "Temp: #{data.temp} F  Humidity: #{data.humidity}  Sky: #{data.description.to_emoji} #{data.description}"]
                     ],
                     style: {
                         border_i: 'X',
                         border_x: '=',
-                        width: 110
+                        width: 180
                     }
                 )
             end
