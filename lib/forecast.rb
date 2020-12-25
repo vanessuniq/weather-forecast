@@ -33,7 +33,7 @@ module Weather
                     style: {
                         border_i: 'X',
                         border_x: '=',
-                        width: 180
+                        width: 130
                     }
                 )
             end
