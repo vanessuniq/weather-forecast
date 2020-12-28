@@ -1,6 +1,4 @@
-class WeatherForecast
-    def welcome
-        puts 'Welcome to your Weather-Forecast!'
-    end
+module Weather
     
 end
+require_relative './environment'
