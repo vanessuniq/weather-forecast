@@ -29,6 +29,14 @@ Or install it yourself as:
 This gem  requires an API Key from OpenWeatherMap. A free key can be obtained after signing up.
  Check other required gem for the app in the Gemfile. 
 
+ APP_ID = YOUR_API_KEY
+
+ After setting up your API Key, type the following:
+
+ $ execute
+
+ then follow the prompts on the screen
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
