@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative '../config/environment'
+require_relative '../lib/weather_forecast'
 
-Weather::ForecastCli.start
+Weather::ForecastCli.new.start

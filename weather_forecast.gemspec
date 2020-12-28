@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
        "public gem pushes."
    end
 
-  spec.executables << 'weather-forecast'
+  spec.executables << 'execute'
 
   spec.add_development_dependency "bundler", "~> 1.17"
   spec.add_development_dependency "rake", "~> 13.0"
