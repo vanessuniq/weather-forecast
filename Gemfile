@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem 'dotenv'
 gem 'pry'
-gem 'nokogiri', '1.11.5'
+gem 'nokogiri', '1.12.5'
 gem 'colorize'
 gem 'tty'
 gem 'tty-prompt'
