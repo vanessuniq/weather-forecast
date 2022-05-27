@@ -24,10 +24,10 @@ GEM
     mini_portile2 (2.8.0)
     multi_xml (0.6.0)
     necromancer (0.5.1)
-    nokogiri (1.13.4)
+    nokogiri (1.13.6)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    nokogiri (1.13.4-x64-mingw32)
+    nokogiri (1.13.6-x64-mingw32)
       racc (~> 1.4)
     pastel (0.7.3)
       equatable (~> 0.6)
@@ -158,7 +158,7 @@ DEPENDENCIES
   figlet
   httparty
   json
-  nokogiri (= 1.13.4)
+  nokogiri (= 1.13.6)
   pry
   rake (~> 13.0)
   rspec
